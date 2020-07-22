@@ -1,0 +1,158 @@
+package june_21_arrays;
+import java.util.*;
+public class rotate_clockwise_amazon_1E 
+{
+static Scanner scn = new Scanner(System.in);
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		int test = scn.nextInt();
+		
+		for(int i =0; i< test; i++)
+		{
+		int size = scn.nextInt();
+		int rot = scn.nextInt();
+		int [] arr = takeInput(size);
+		ArrayRotate(arr, rot);
+//		ArrayTime(arr, rot);
+		
+		
+		
+		
+		
+//		display();
+		}
+
+	}
+	public static int [] takeInput(int a)
+	{
+		int arr [] = new int [a];
+		for(int i =0; i<arr.length ; i++)
+		{
+//			System.out.println(i + "no.");
+			arr[i] = scn.nextInt();
+		}
+		
+		return arr;
+		
+	}
+	public static void display(int [] arr)
+	{
+		for(int val:arr)
+		{
+			System.out.print(val + " ");
+		}
+		System.out.println();
+	}
+	
+	public static void ArrayRotate(int [] arr, int d)
+	{
+		int arr_cut1 [] = new int [d-1];
+		int arr_cut2 [] = new int [arr.length - (arr_cut1.length)];
+	
+			arr_cut1 = Arrays.copyOfRange(arr, 0, d);
+//			display(arr_cut1);
+			
+			arr_cut2 = Arrays.copyOfRange(arr, d, arr.length);
+//			display(arr_cut2);
+			
+			
+			ArrayConcat(arr_cut1, arr_cut2);
+			
+			
+			
+			
+		
+		
+		
+	}
+	public static void  ArrayConcat(int [] arr1, int [] arr2)
+	{
+		
+		int a = arr1.length;
+		int b = arr2.length;
+		
+		int [] result = new int [a +b];
+		
+		
+		System.arraycopy(arr2, 0, result, 0, b );
+
+		System.arraycopy(arr1, 0, result, b, a );
+		
+		display(result);
+
+	}
+	
+	/*public static int [] ArrayTime(int [] arr, int d)
+	{
+		int [] arrf = new int [arr.length];
+		
+		for(int i = d; i< arr.length; i++ )
+		{
+			arrf[i-d] = arr[i+d] ;
+		}
+		
+		for(int i =d; i<d ; i++)
+		{
+			arrf[d+1] = arr[i];
+		}
+	}*/
+
+}
+
+
+
+
+/*solution 2 with optimization*/
+
+/*
+import java.util.*;
+class GFG {
+static Scanner sc = new Scanner(System.in);
+    
+    static void printLeftRotate(String a[], int n, int r)
+    {
+        String str = String.valueOf(a);
+        
+        int i;
+        
+        for ( i = r; i < n; i++)
+        {
+            System.out.print(a[i]+" ");
+        }
+        
+        for (i = 0; i < r; i++)
+        {
+            System.out.print(a[i]+" ");
+        }
+    }
+    
+    static void readInputs()
+    {
+        Scanner sc = new Scanner(System.in);
+        int testCases = sc.nextInt();
+        
+        while(testCases-- > 0)
+        {
+            int n = sc.nextInt();
+            int r = sc.nextInt();
+            int i;
+            
+            String a[] = new String[n];
+            
+            for(i = 0; i < n; i++)
+            {
+                a[i] = sc.next();
+            }
+            
+            printLeftRotate(a, n, r);
+            System.out.println();
+        }
+    }
+    
+	public static void main (String[] args) {
+		//code
+		readInputs();
+	}
+}
+*/
