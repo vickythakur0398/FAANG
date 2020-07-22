@@ -1,0 +1,105 @@
+package june_21_arrays;
+import java.util.*;
+public class rain_water_trapping_faang_4M {
+static Scanner scn = new Scanner(System.in);
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		
+		int test = scn.nextInt();
+		for(int i = 0; i< test; i++) {
+			int size = scn.nextInt();
+			int arr [] = takeInput(size);
+			int arrleft [] = leftArray(arr);
+			int arrRight [] = rightArray(arr);
+			display(arrleft);
+			display(arrRight);
+			System.out.println();
+			RainTrapping(arrleft , arrRight ,  arr);
+			
+		}
+		
+
+	}public static int [] takeInput(int size)
+	{
+		int arr [] = new int [size];
+		
+		for(int i =0; i< arr.length; i++)
+		{
+			arr[i] = scn.nextInt();
+		}
+		
+		return arr;
+	}
+	
+	public static int [] leftArray(int [] arr)
+	{
+		int [] arrL = new int [arr.length];
+		
+		int element = arr[0]; 
+		
+		for(int i =0; i <arr.length; i++)
+		{
+			if(arr[i] >= element )
+			{
+				
+				element = arr[i];
+				arrL[i] = element; 
+				
+			}else
+			{
+				arrL[i] = element;
+			}
+		}
+		return arrL;
+	}
+	
+	public static int [] rightArray(int [] arr)
+	{
+		
+		int [] arrR = new int [arr.length];
+		int element = arr[arr.length -1];
+		
+		for(int i = arr.length-1 ; i >-1 ; i--)
+		{
+			
+			if(arr[i] >= element)
+			{
+				element = arr[i];
+				arrR[i] = element;
+			}
+			else
+			{
+				arrR[i] = element;
+			}
+		}
+		
+		return arrR;
+		
+		
+	}
+	
+	public static void RainTrapping(int[] arrL , int [] arrR , int [] arr)
+	{
+		int result = 0;
+		for(int i =0; i< arr.length; i++)
+		{
+			result += Math.min(arrL[i], arrR[i]) -arr[i];
+//			result += result -arr[i];
+		}
+		
+		System.out.println(result);
+		
+	}
+	public static void display(int [] arr)
+	{
+		for(int val :arr)
+		{
+			System.out.print(val + " ");
+		}
+		System.out.println();
+	}
+	
+	
+
+}
