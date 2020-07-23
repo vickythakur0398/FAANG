@@ -1,3 +1,9 @@
+/*
+Given an array of integers, write a function that returns true if there is a triplet (a, b, c) that satisfies a2 + b2 = c2.
+
+*/
+
+
 //package gfg;
 
 import java.lang.reflect.Array;
